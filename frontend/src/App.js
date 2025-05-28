@@ -109,12 +109,6 @@ const handleClick = () => {
       fileInputRef.current.click();
     }
   };
-const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      console.log('Fichier sélectionné :', file.name);
-    }
-  };
 
   return (
     <div className="flex flex-col h-screen w-full bg-white font-sans relative">
@@ -174,7 +168,7 @@ const handleFileChange = (event) => {
                   <input
                           type="file"
                           ref={fileInputRef}
-                          onChange={handleFileChange}
+                          onChange={handleImport}
                           style={{ display: 'none' }}
                         />
                   {url && (
