@@ -104,6 +104,17 @@ useEffect(() => {
 useEffect(() => {
   localStorage.setItem('youtube-lyrics', lyrics);
 }, [lyrics]);
+const handleClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      console.log('Fichier sélectionné :', file.name);
+    }
+  };
 
   return (
     <div className="flex flex-col h-screen w-full bg-white font-sans relative">
@@ -155,11 +166,17 @@ useEffect(() => {
                     <FaDownload />
                   </button>
                   <button 
-                    onClick={() => fileInputRef.current.click()} 
+                    onClick={handleClick} 
                     className="p-3 rounded-lg border w-fit border-[#C59849] text-[#C59849] hover:bg-[#C59849]/10 transition-colors"
                   >
                     <FaUpload />
                   </button>
+                  <input
+                          type="file"
+                          ref={fileInputRef}
+                          onChange={handleFileChange}
+                          style={{ display: 'none' }}
+                        />
                   {url && (
                     <a 
                       href={url} 
